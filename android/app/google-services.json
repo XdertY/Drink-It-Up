@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "552675585340",
+    "firebase_url": "https://drinkinggame-b60f0-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "drinkinggame-b60f0",
+    "storage_bucket": "drinkinggame-b60f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552675585340:android:1236cf3285707445924239",
+        "android_client_info": {
+          "package_name": "com.drink_for_free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "552675585340-bb79u9nf26ri76cn5c3k90jp18uorrq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJz9t0fd7XooNQmrN-Ud3hhZrXie22Gkw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "552675585340-bb79u9nf26ri76cn5c3k90jp18uorrq1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "552675585340-n53qnddtqn8shg4vt3b2bamuvp1tc0g3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.alex.drinkforfree"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
