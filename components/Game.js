@@ -1,19 +1,22 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Button } from 'react-native';
+import { Button, SafeAreaView, View } from 'react-native';
 import { useDatabase } from '../lib/useDatabase';
 import { Wrapper } from './Wrapper';
 import { generateGameQuestions } from '../lib/questionDistributionGenerator';
 import CustomText from './CustomText';
+import { QuestionCard } from './QuestionCard'
+import { GameOverCard } from './GameOverCard';
 
 export const Game = (props) => {
     const [category, setCategory] = useState();
     const [playerNames, setPlayerNames] = useState();
     const [questions, setQuestions] = useState();
-    const [questionElements, setQuestionElements] = useState([]);
+    const [questionCards, setQuestionCards] = useState([]);
+    const [visitedQuestionCards, setVisitedQuestionCards] = useState([]);
     const { getReference, deleteReference } = useDatabase();
+    const [switchToNextCardFlag, setSwitchToNextCardFlag] = useState(null);
 
     useEffect(() => {
-        // console.log("We are in the component - navigation")
         getReference(`/categories/${props.navigation.state.params.category.key}`, setCategory);
         setPlayerNames(JSON.parse(JSON.stringify(props.navigation.state.params.names)));
         console.log("The parsed names are: ", JSON.parse(JSON.stringify(props.navigation.state.params.names)));
@@ -21,39 +24,43 @@ export const Game = (props) => {
 
 
     useEffect(() => {
-        // getReference(`/categories/${props.category}`, setDataReference);
         return () => deleteReference(`/categories/${props.navigation.state.params.category.key}`);
     }, [])
 
     useEffect(() => {
-        // console.log("We are logging the category ", category);
-        // console.log("We are logging the playerNames ", playerNames);
-        // console.log("Combined effect ", category, playerNames);
-        if(category !== undefined && playerNames !== undefined && playerNames.length > 0) {
-            // console.log('category and playerNames are not undefined')
+        if (category !== undefined && playerNames !== undefined && playerNames.length > 0) {
             const gameQuestions = generateGameQuestions(category.questions, playerNames);
-            if(gameQuestions !== "error") {
+            if (gameQuestions !== "error") {
                 setQuestions(gameQuestions);
-                setQuestionElements(gameQuestions.map((el, index) => <CustomText key={index}>{el.type + "    " + el.question}</CustomText>))
-
+                console.log("We are setting the questionCards: ", gameQuestions)
+                setQuestionCards(gameQuestions.map((el, index) => {
+                    return <QuestionCard question={el} next={setSwitchToNextCardFlag}/>;
+                }))
             }
-            // console.log("The generated questions are: ", gameQuestions);
         }
     }, [category, playerNames])
 
-    // useEffect(() => {
-    //     console.log("Names effect: ", playerNames)
-    // }, [playerNames])
+    useEffect(() => {
+        if(switchToNextCardFlag !== null) {
+            switchToNextCard();
+        }
 
-    // useEffect(() => {
-    //     console.log("Category effect: ", category)
-    // }, [category])
+    } , [switchToNextCardFlag])
 
+    const switchToNextCard = () => {
+        if(questionCards.length === 1) props.navigation.goBack();
+        const tempQuestionCards = [...questionCards];
+        const visitedQuestionCard = tempQuestionCards.shift();
+        const newVisitedQuestionCards = visitedQuestionCards;
+        newVisitedQuestionCards.push(visitedQuestionCard);
+        setQuestionCards(tempQuestionCards);
+        setVisitedQuestionCards(newVisitedQuestionCards);
+    }
 
     return (
-        <Wrapper>
-            {questionElements.length > 0 ? questionElements : null}
-            <Button onPress={() => props.navigation.goBack()} title="Go Back"/>
-        </Wrapper>
+        
+        <View style={{ display: "flex", flex: 1}}>
+            {questionCards.length > 0 ? questionCards[0] : null}
+        </View>
     )
 }

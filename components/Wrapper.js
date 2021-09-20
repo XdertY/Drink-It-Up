@@ -3,7 +3,7 @@ import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 
 export const Wrapper = (props) => {
     return (
-        <SafeAreaView style={styles.background}>
+        <SafeAreaView style={{...styles.background, ...props.style}}>
             <ScrollView>
                 {props.children}
             </ScrollView>

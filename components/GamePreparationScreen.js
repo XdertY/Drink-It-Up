@@ -13,20 +13,20 @@ export const GamePreparationScreen = (props) => {
 
     const addPlayer = () => {
         if (name !== "") {
-            setNames([...names, {key: names.length, name}]);
+            setNames([...names, { key: names.length, name }]);
             setName("");
         }
     };
 
     const removePlayerHandler = (playerKey) => {
         setNames(names.reduce((acc, elem, index) => {
-            if(elem.key !== playerKey) return [...acc, {key: index, name: elem.name}];
+            if (elem.key !== playerKey) return [...acc, { key: index, name: elem.name }];
             return acc
         }, []))
     };
 
     useEffect(() => {
-        if(names.length >= 0)
+        if (names.length >= 0)
             setNameChips(names.map(el => <NameChip key={el.key} playerKey={el.key} playerName={el.name} removePlayerHandler={removePlayerHandler} />));
     }, [names])
 
@@ -65,10 +65,12 @@ export const GamePreparationScreen = (props) => {
                     </Pressable>
 
                     <Pressable style={styles.button} onPress={() => {
-                        props.navigation.navigate("Game", {
-                            category,
-                            names
-                        });
+                        if (names.length > 0) {
+                            props.navigation.navigate("Game", {
+                                category,
+                                names
+                            });
+                        }
                     }}>
                         <LinearGradient angle={180} colors={['#2a7909', '#00d4ff']} style={styles.gradient}>
                             <CustomText style={styles.text}>{"Start"}</CustomText>
