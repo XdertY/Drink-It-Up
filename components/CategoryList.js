@@ -17,7 +17,6 @@ export const CategoryList = (props) => {
     const renderCategoryItems = () => {
         if (dataReference) {
             return dataReference.map((category, index) => {
-                console.log("The current category is: ", category)
                 return <CategoryItem navigation={props.navigation} key={index} category={category} categoryKey={index}></CategoryItem>
             })
         } return null;

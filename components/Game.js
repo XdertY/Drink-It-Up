@@ -10,27 +10,45 @@ export const Game = (props) => {
     const [playerNames, setPlayerNames] = useState();
     const [questions, setQuestions] = useState();
     const [questionElements, setQuestionElements] = useState([]);
+    const { getReference, deleteReference } = useDatabase();
 
     useEffect(() => {
-        setCategory(props.navigation.state.params.category);
-        setPlayerNames(props.navigation.state.params.names);
+        // console.log("We are in the component - navigation")
+        getReference(`/categories/${props.navigation.state.params.category.key}`, setCategory);
+        setPlayerNames(JSON.parse(JSON.stringify(props.navigation.state.params.names)));
+        console.log("The parsed names are: ", JSON.parse(JSON.stringify(props.navigation.state.params.names)));
     }, [props.navigation]);
 
 
-    // useEffect(() => {
-    //     getReference(`/categories/${props.category}`, setDataReference);
-    //     return () => deleteReference(`/categories/${props.category}`);
-    // }, [])
+    useEffect(() => {
+        // getReference(`/categories/${props.category}`, setDataReference);
+        return () => deleteReference(`/categories/${props.navigation.state.params.category.key}`);
+    }, [])
 
     useEffect(() => {
-        console.log(category)
-        if(category && playerNames) {
+        // console.log("We are logging the category ", category);
+        // console.log("We are logging the playerNames ", playerNames);
+        // console.log("Combined effect ", category, playerNames);
+        if(category !== undefined && playerNames !== undefined && playerNames.length > 0) {
+            // console.log('category and playerNames are not undefined')
             const gameQuestions = generateGameQuestions(category.questions, playerNames);
-            console.log("The generated questions are: ", gameQuestions);
-            setQuestions(gameQuestions);
-            setQuestionElements(gameQuestions.map((el, index) => <CustomText key={index}>{el.type + "    " + el.question}</CustomText>))
+            if(gameQuestions !== "error") {
+                setQuestions(gameQuestions);
+                setQuestionElements(gameQuestions.map((el, index) => <CustomText key={index}>{el.type + "    " + el.question}</CustomText>))
+
+            }
+            // console.log("The generated questions are: ", gameQuestions);
         }
     }, [category, playerNames])
+
+    // useEffect(() => {
+    //     console.log("Names effect: ", playerNames)
+    // }, [playerNames])
+
+    // useEffect(() => {
+    //     console.log("Category effect: ", category)
+    // }, [category])
+
 
     return (
         <Wrapper>
