@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CategoryItem } from './CategoryItem';
 import { useDatabase } from '../lib/useDatabase';
-import { View, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { View, SafeAreaView, ScrollView, StyleSheet, ImageBackground } from 'react-native';
 import { Wrapper } from './Wrapper';
 
 export const CategoryList = (props) => {
@@ -23,13 +23,15 @@ export const CategoryList = (props) => {
     }
 
     return (
-        <Wrapper>
-            <View style={styles.background}>
-                <View style={styles.list}>
-                    {/* {dataReference ? <CategoryItem category={dataReference.toString()}/> : null} */}
-                    {renderCategoryItems()}
+        <Wrapper style={{ backgroundColor: "white" }}>
+            
+                <View style={styles.background}>
+                    <View style={styles.list}>
+                        {/* {dataReference ? <CategoryItem category={dataReference.toString()}/> : null} */}
+                        {renderCategoryItems()}
+                    </View>
                 </View>
-            </View>
+
         </Wrapper>
     )
 
@@ -44,7 +46,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     background: {
-        backgroundColor: "#4a536b",
         flex: 1,
     }
 });

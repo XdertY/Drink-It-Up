@@ -14,8 +14,9 @@
 		2122A4A9FE5DA9EB6902D547 /* libPods-drink_for_free-drink_for_freeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E414AFD28FE33BF6E4A454E /* libPods-drink_for_free-drink_for_freeTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		AA3A040C9000A988F9F540DE /* libPods-drink_for_free.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 137F679E1207F8C821ACDA82 /* libPods-drink_for_free.a */; };
-		FA508A3026CE8A8E00A5760B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA508A2F26CE8A8E00A5760B /* GoogleService-Info.plist */; };
 		D142CA7739DB4B039D1F5807 /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 99EEF4F060A54C6E9D23BBFF /* Lobster-Regular.ttf */; };
+		FA508A3026CE8A8E00A5760B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA508A2F26CE8A8E00A5760B /* GoogleService-Info.plist */; };
+		FA74674826FA2A6600E05E6A /* BridgeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA74674726FA2A6600E05E6A /* BridgeHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,10 +45,12 @@
 		269CC17C7BCEBDF7D6399CA9 /* Pods-drink_for_free.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-drink_for_free.release.xcconfig"; path = "Target Support Files/Pods-drink_for_free/Pods-drink_for_free.release.xcconfig"; sourceTree = "<group>"; };
 		34BEA657EEADA2BB0895E846 /* Pods-drink_for_free.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-drink_for_free.debug.xcconfig"; path = "Target Support Files/Pods-drink_for_free/Pods-drink_for_free.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = drink_for_free/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		99EEF4F060A54C6E9D23BBFF /* Lobster-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lobster-Regular.ttf"; path = "../assets/fonts/Lobster-Regular.ttf"; sourceTree = "<group>"; };
 		E369CCFFCE28EE2E4A685FB8 /* Pods-drink_for_free-drink_for_freeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-drink_for_free-drink_for_freeTests.release.xcconfig"; path = "Target Support Files/Pods-drink_for_free-drink_for_freeTests/Pods-drink_for_free-drink_for_freeTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FA508A2F26CE8A8E00A5760B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		99EEF4F060A54C6E9D23BBFF /* Lobster-Regular.ttf */ = {isa = PBXFileReference; name = "Lobster-Regular.ttf"; path = "../assets/fonts/Lobster-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FA74674626FA2A6500E05E6A /* drink_for_free-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "drink_for_free-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA74674726FA2A6600E05E6A /* BridgeHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgeHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				FA74674726FA2A6600E05E6A /* BridgeHeader.swift */,
 				FA508A2F26CE8A8E00A5760B /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* drink_for_free */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -139,6 +143,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				19894083AA3C2E4510B8C111 /* Pods */,
 				97EC01FFA0964298A00B3101 /* Resources */,
+				FA74674626FA2A6500E05E6A /* drink_for_free-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -155,13 +160,12 @@
 			sourceTree = "<group>";
 		};
 		97EC01FFA0964298A00B3101 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				99EEF4F060A54C6E9D23BBFF /* Lobster-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -223,7 +227,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -441,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA74674826FA2A6600E05E6A /* BridgeHeader.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
@@ -461,6 +466,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 165394E9A163FF9F7191340F /* Pods-drink_for_free-drink_for_freeTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				DEVELOPMENT_TEAM = 9C2559H47K;
@@ -491,6 +497,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E369CCFFCE28EE2E4A685FB8 /* Pods-drink_for_free-drink_for_freeTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
@@ -537,6 +544,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = drink_for_free;
+				SWIFT_OBJC_BRIDGING_HEADER = "drink_for_free-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -565,6 +573,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = drink_for_free;
+				SWIFT_OBJC_BRIDGING_HEADER = "drink_for_free-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

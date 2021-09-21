@@ -47,7 +47,7 @@ export const GamePreparationScreen = (props) => {
                 />
                 {/* <View style={styles.break}/> */}
                 <Pressable style={styles.addPlayerButton} onPress={() => addPlayer()}>
-                    <LinearGradient angle={180} colors={['#0db825', '#3ebd50']} style={styles.gradient}>
+                    <LinearGradient angle={180} colors={['#26CCC0', '#26CCC0']} style={styles.gradient}>
                         <CustomText style={styles.text}>{"+"}</CustomText>
                     </LinearGradient>
                 </Pressable>
@@ -59,7 +59,7 @@ export const GamePreparationScreen = (props) => {
                 <View style={{ ...styles.contentContainer, height: 100, maxHeight: 100, marginTop: 0 }}>
 
                     <Pressable style={styles.button} onPress={() => { props.navigation.goBack() }}>
-                        <LinearGradient angle={180} colors={['#fcb045', '#fd1d1d']} style={styles.gradient}>
+                        <LinearGradient angle={180} colors={['#f8cb40', '#f8cb40']} style={styles.gradient}>
                             <CustomText style={styles.text}>{"Go Back"}</CustomText>
                         </LinearGradient>
                     </Pressable>
@@ -72,7 +72,7 @@ export const GamePreparationScreen = (props) => {
                             });
                         }
                     }}>
-                        <LinearGradient angle={180} colors={['#2a7909', '#00d4ff']} style={styles.gradient}>
+                        <LinearGradient angle={180} colors={['#26CCC0', '#26CCC0']} style={styles.gradient}>
                             <CustomText style={styles.text}>{"Start"}</CustomText>
                         </LinearGradient>
                     </Pressable>
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 20,
         borderColor: "white",
+        backgroundColor: "#384858",
         padding: 10,
         width: "70%",
         color: "white",

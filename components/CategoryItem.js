@@ -9,12 +9,18 @@ export const CategoryItem = (props) => {
             category: {...props.category, key: props.categoryKey}
         });
     }
+
+    const getColors = () => {
+        index = props.categoryKey + 1; 
+        if(index % 4 === 1 || index % 4 === 0) return ['#f8cb40', '#f8cb40']
+        return ['#26CCC0', '#26CCC0']
+    }
  
     return (
         <View style={{...styles.card}}>
 
             <TouchableWithoutFeedback onPress={() => startTransition()}>
-                <LinearGradient colors={['#ff9a8d', '#aed6dc']} style={styles.gradient}>
+                <LinearGradient colors={getColors()} style={styles.gradient}>
                     <Text style={styles.category}>{props.category.name}</Text>
                 </LinearGradient>
             </TouchableWithoutFeedback>
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
     card: {
         padding: 10,
         minHeight: 200,
-        width: `50%`,
+        width: `40%`,
     },
     gradient: {
         width: "100%",
@@ -42,7 +48,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Lobster-Regular',
         fontSize: 32,
         fontWeight: "bold",
-        color: "gray",
+        color: "white",
         fontSize: 25
     }
 

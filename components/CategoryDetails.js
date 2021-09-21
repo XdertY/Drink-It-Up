@@ -31,7 +31,7 @@ export const CategoryDetails = (props) => {
 
                     <View style={{...styles.contentContainer , height: 100, maxHeight: 100}}>
                         <Pressable style={styles.button} onPress={() => { props.navigation.goBack() }}>
-                            <LinearGradient angle={180} colors={['#fcb045', '#fd1d1d']} style={styles.gradient}>
+                            <LinearGradient angle={180} colors={['#f8cb40', '#f8cb40']} style={styles.gradient}>
                                 <CustomText style={styles.text}>{"Go Back"}</CustomText>
                             </LinearGradient>
                         </Pressable>
@@ -41,7 +41,7 @@ export const CategoryDetails = (props) => {
                                 category
                             });
                          }}>
-                            <LinearGradient angle={180} colors={['#2a7909', '#00d4ff']} style={styles.gradient}>
+                            <LinearGradient angle={180} colors={['#26CCC0', '#26CCC0']} style={styles.gradient}>
                                 <CustomText style={styles.text}>{"Play"}</CustomText>
                             </LinearGradient>
                         </Pressable>
