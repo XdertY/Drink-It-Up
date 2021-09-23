@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
-import { Text, Pressable, StyleSheet, SafeAreaView } from 'react-native'
+import React from 'react'
+import { Pressable, StyleSheet, SafeAreaView } from 'react-native'
 import CustomText from './CustomText'
-import { Wrapper } from './Wrapper'
+
 
 export const QuestionCard = (props) => {
 
@@ -12,11 +12,19 @@ export const QuestionCard = (props) => {
         4: "#ff005d"
     }
 
+    const types = {
+        1: 'Dare: ',
+        2: 'Game: ', 
+        3: 'Question: ',
+        4: ''
+    }
+
     return (
 
         <SafeAreaView style={{...styles.container, backgroundColor: backgroundColors[props.question.type]}}>
             <Pressable style={styles.container} onPress={() => props.next(new Date().getTime())}>
-                <CustomText style={{ fontSize: 60, textAlign: "center", color: "white" }}>{props.question.question}</CustomText>
+                <CustomText style={{ fontSize: 60, textAlign: "center", color: "white", fontWeight: 'bold' }}>{types[props.question.type]}</CustomText>
+                <CustomText style={{ fontSize: props.question.type === 4 ? 70 : 50, textAlign: "center", color: "white" }}>{props.question.question}</CustomText>
             </Pressable>
 
         </SafeAreaView>

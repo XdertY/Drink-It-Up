@@ -19,7 +19,6 @@ export const Game = (props) => {
     useEffect(() => {
         getReference(`/categories/${props.navigation.state.params.category.key}`, setCategory);
         setPlayerNames(JSON.parse(JSON.stringify(props.navigation.state.params.names)));
-        console.log("The parsed names are: ", JSON.parse(JSON.stringify(props.navigation.state.params.names)));
     }, [props.navigation]);
 
 
@@ -32,7 +31,6 @@ export const Game = (props) => {
             const gameQuestions = generateGameQuestions(category.questions, playerNames);
             if (gameQuestions !== "error") {
                 setQuestions(gameQuestions);
-                console.log("We are setting the questionCards: ", gameQuestions)
                 setQuestionCards(gameQuestions.map((el, index) => {
                     return <QuestionCard question={el} next={setSwitchToNextCardFlag}/>;
                 }))
@@ -59,7 +57,7 @@ export const Game = (props) => {
 
     return (
         
-        <View style={{ display: "flex", flex: 1}}>
+        <View style={{ display: "flex", flex: 1, height: '100%'}}>
             {questionCards.length > 0 ? questionCards[0] : null}
         </View>
     )
