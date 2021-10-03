@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Text, Button } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, Text, Button, Pressable } from 'react-native';
 
 export const NameChip = (props) => {
     return (
         <View style={styles.container}>
                 <Text style={styles.text}>{props.playerName}</Text>
-                <Button title="X" onPress={() => props.removePlayerHandler(props.playerKey)}/>
+                <Pressable  style={styles.button} onPress={() => props.removePlayerHandler(props.playerKey)}>
+                    <Text>{"X"}
+                    </Text>
+                </Pressable>
         </View>
     )
 }
@@ -20,13 +23,21 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         justifyContent: "center",
         width: "auto",
-        elevation: 3,
         marginHorizontal: 10,
         marginTop: 0,
-        paddingTop: 0
+        paddingTop: 0,
+        alignItems: 'center'
     },
     text: {
         margin: 10
+    },
+    button: {
+        elevation: 0,
+        backgroundColor: 'transparent',
+        padding: 10
+
+        
     }
+
    
 })

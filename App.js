@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { CategoryList } from './components/CategoryList'
-import createAnimatedSwitchNavigator from 'react-navigation-animated-switch';
-import { Transition } from 'react-native-reanimated';
 import { createAppContainer } from 'react-navigation';
 import { CategoryDetails } from './components/CategoryDetails';
 import { createStackNavigator } from 'react-navigation-stack';
-import { SensorTest } from './components/SensorTest';
 import { GamePreparationScreen } from './components/GamePreparationScreen';
 import { Game } from './components/Game';
 

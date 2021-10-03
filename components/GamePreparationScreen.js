@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         height: "50%",
         borderRadius: 4,
-        elevation: 3,
+        
     },
     text: {
         fontWeight: "bold",
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 4,
-        elevation: 3,
+        
         width: "40%",
         height: "100%"
     },
