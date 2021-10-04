@@ -4,35 +4,36 @@ import { Wrapper } from './Wrapper';
 import LinearGradient from 'react-native-linear-gradient';
 import { NameChip } from './NameChip';
 import CustomText from './CustomText';
+import { useSelector, useDispatch } from 'react-redux';
+import { actions } from '../store/index';
 
 export const GamePreparationScreen = (props) => {
+    const names = useSelector(state => state.names);
+    const dispatch = useDispatch();
     const [name, setName] = useState("");
-    const [names, setNames] = useState([]);
+    // const [names, setNames] = useState([]);
     const [nameChips, setNameChips] = useState([]);
-    const [category, setCategory] = useState();
 
     const addPlayer = () => {
         if (name !== "") {
-            setNames([...names, { key: names.length, name }]);
+            dispatch(actions.addPlayer(name));
+            // setNames([...names, { key: names.length, name }]);
             setName("");
         }
     };
 
-    const removePlayerHandler = (playerKey) => {
-        setNames(names.reduce((acc, elem, index) => {
-            if (elem.key !== playerKey) return [...acc, { key: index, name: elem.name }];
-            return acc
-        }, []))
+    const removePlayerHandler = (playerKey) => { 
+        dispatch(actions.removePlayer(playerKey));
+        // setNames(names.reduce((acc, elem, index) => {
+        //     if (elem.key !== playerKey) return [...acc, { key: index, name: elem.name }];
+        //     return acc
+        // }, []))
     };
 
     useEffect(() => {
         if (names.length >= 0)
             setNameChips(names.map(el => <NameChip key={el.key} playerKey={el.key} playerName={el.name} removePlayerHandler={removePlayerHandler} />));
     }, [names])
-
-    useEffect(() => {
-        setCategory(props.navigation.state.params.category)
-    }, [props.navigation]);
 
 
     return (
@@ -66,10 +67,7 @@ export const GamePreparationScreen = (props) => {
 
                     <Pressable style={styles.button} onPress={() => {
                         if (names.length > 0) {
-                            props.navigation.navigate("Game", {
-                                category,
-                                names
-                            });
+                            props.navigation.navigate("Home");
                         }
                     }}>
                         <LinearGradient angle={180} colors={['#26CCC0', '#26CCC0']} style={styles.gradient}>

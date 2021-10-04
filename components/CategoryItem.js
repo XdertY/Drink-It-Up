@@ -1,13 +1,15 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Text, TouchableWithoutFeedback, StyleSheet, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
+import { actions } from '../store';
+import { useDispatch } from 'react-redux';
 
 export const CategoryItem = (props) => {
+    const dispatch = useDispatch();
 
     const startTransition = () => {
-        props.navigation.navigate("CategoryDetails", {
-            category: {...props.category, key: props.categoryKey}
-        });
+        dispatch(actions.selectCategory( {...props.category, key: props.categoryKey}))
+        props.navigation.navigate("CategoryDetails");
     }
 
     const getColors = () => {

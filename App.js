@@ -5,6 +5,8 @@ import { CategoryDetails } from './components/CategoryDetails';
 import { createStackNavigator } from 'react-navigation-stack';
 import { GamePreparationScreen } from './components/GamePreparationScreen';
 import { Game } from './components/Game';
+import { Provider } from 'react-redux';
+import store from './store'
 
 import {
   SafeAreaView,
@@ -18,7 +20,7 @@ import {
   Platform
 } from 'react-native';
 
-const App = (props) => {
+const Home = (props) => {
   return (
     <CategoryList navigation={props.navigation} />
   );
@@ -79,15 +81,24 @@ const TransitionConfiguration = () => {
 
 const Navigator = createAppContainer(createStackNavigator(
   {
-    Home: { screen: App },
+    Home: { screen: Home },
     CategoryDetails: { screen: CategoryDetails },
     GamePreparationScreen: { screen: GamePreparationScreen },
     Game: { screen: Game }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'GamePreparationScreen',
     headerMode: 'none'
   }
 ));
 
-export default Navigator
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Navigator/>
+    </Provider>
+  )
+}
+
+
+export default App

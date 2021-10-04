@@ -1,42 +1,43 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Button, SafeAreaView, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
 import { useDatabase } from '../lib/useDatabase';
-import { Wrapper } from './Wrapper';
 import { generateGameQuestions } from '../lib/questionDistributionGenerator';
-import CustomText from './CustomText';
-import { QuestionCard } from './QuestionCard'
-import { GameOverCard } from './GameOverCard';
+import { QuestionCard } from './QuestionCard';
+import { useSelector } from 'react-redux';
 
 export const Game = (props) => {
-    const [category, setCategory] = useState();
-    const [playerNames, setPlayerNames] = useState();
-    const [questions, setQuestions] = useState();
+    const names = useSelector(state => state.names);
+    const category = useSelector(state => state.category);
+    // const [playerNames, setPlayerNames] = useState();
+    // const [questions, setQuestions] = useState();
     const [questionCards, setQuestionCards] = useState([]);
     const [visitedQuestionCards, setVisitedQuestionCards] = useState([]);
-    const { getReference, deleteReference } = useDatabase();
+    // const { getReference, deleteReference } = useDatabase();
     const [switchToNextCardFlag, setSwitchToNextCardFlag] = useState(null);
 
-    useEffect(() => {
-        getReference(`/categories/${props.navigation.state.params.category.key}`, setCategory);
-        setPlayerNames(JSON.parse(JSON.stringify(props.navigation.state.params.names)));
-    }, [props.navigation]);
+    // useEffect(() => {
+    //     getReference(`/categories/${category.key}`, setCategory);
+    //     setPlayerNames(JSON.parse(JSON.stringify(names)));
+    // }, [props.navigation]);
 
 
-    useEffect(() => {
-        return () => deleteReference(`/categories/${props.navigation.state.params.category.key}`);
-    }, [])
+    // useEffect(() => {
+    //     return () => deleteReference(`/categories/${category.key}`);
+    // }, [])
 
     useEffect(() => {
-        if (category !== undefined && playerNames !== undefined && playerNames.length > 0) {
-            const gameQuestions = generateGameQuestions(category.questions, playerNames);
+        if (category !== undefined && names !== undefined && names.length > 0) {
+            const categoryQuestions = JSON.parse(JSON.stringify(category.questions));
+            const playerNames = JSON.parse(JSON.stringify(names));
+            const gameQuestions = generateGameQuestions(categoryQuestions, playerNames);
             if (gameQuestions !== "error") {
-                setQuestions(gameQuestions);
+                // setQuestions(gameQuestions);
                 setQuestionCards(gameQuestions.map((el, index) => {
                     return <QuestionCard question={el} next={setSwitchToNextCardFlag}/>;
                 }))
             }
         }
-    }, [category, playerNames])
+    }, [category, names])
 
     useEffect(() => {
         if(switchToNextCardFlag !== null) {

@@ -1,22 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View, SafeAreaView, Button, StyleSheet, Pressable } from 'react-native';
+import React from 'react';
+import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Wrapper } from './Wrapper';
-import { useDatabase } from '../lib/useDatabase';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomText from './CustomText';
+import { useSelector } from 'react-redux';
 
 export const CategoryDetails = (props) => {
-    const [screenProps, setScreenProps] = useState(props.navigation.state);
-    const [category, setCategory] = useState();
-
-    useEffect(() => {
-        setScreenProps(props.navigation.state.params);
-        setCategory(props.navigation.state.params.category)
-    }, [props.navigation]);
+    const category = useSelector(state => state.category)
 
     return (
         <Wrapper>
-            {category ?
                 <View style={styles.mainContainer}>
 
                     {/* {dataReference ? <CategoryItem category={dataReference.toString()}/> : null} */}
@@ -37,9 +30,7 @@ export const CategoryDetails = (props) => {
                         </Pressable>
 
                         <Pressable style={styles.button} onPress={() => { 
-                            props.navigation.navigate("GamePreparationScreen", {
-                                category
-                            });
+                            props.navigation.navigate("Game");
                          }}>
                             <LinearGradient angle={180} colors={['#26CCC0', '#26CCC0']} style={styles.gradient}>
                                 <CustomText style={styles.text}>{"Play"}</CustomText>
@@ -50,7 +41,6 @@ export const CategoryDetails = (props) => {
                     {/* <Button title={"Go back"} onPress={() => { props.navigation.goBack() }}></Button> */}
 
                 </View>
-                : null}
         </Wrapper>
 
     )
